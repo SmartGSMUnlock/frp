@@ -245,25 +245,6 @@
     display: none;
   }
 
-  .note {
-    margin-top: 40px;
-    padding: 24px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent);
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
-  .note code {
-    background: var(--bg);
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 13px;
-    color: var(--accent);
-  }
-
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     #search { width: 100%; }
@@ -290,23 +271,34 @@
 
   <div class="stats">
     <div class="stat">
-      <strong id="totalApps">23</strong>
+      <strong id="totalApps">25</strong>
       Total Apps
     </div>
     <div class="stat">
-      <strong id="visibleApps">23</strong>
+      <strong id="visibleApps">25</strong>
       Shown
     </div>
   </div>
   
   <h2 class="section-title">Brand App Stores</h2>
   <div class="grid" id="brandGrid">
-    <div class="app-card" data-name="infinix app center xos store">
-      <a href="intent://com.transsion.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+    <div class="app-card" data-name="infinix xshare app center xos">
+      <a href="intent://com.transsion.phonemaster/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
         <div class="icon">📦</div>
         <div class="app-info">
-          <span class="app-name">Infinix App Center</span>
-          <span class="app-desc">XOS App Store</span>
+          <span class="app-name">Infinix Phone Master</span>
+          <span class="app-desc">XOS App Center & Tools</span>
+          <span class="app-tag">INFINIX</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="infinix palm store app">
+      <a href="intent://com.transsion.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+        <div class="icon">🌴</div>
+        <div class="app-info">
+          <span class="app-name">Palm Store</span>
+          <span class="app-desc">Infinix/Tecno App Store</span>
           <span class="app-tag">INFINIX</span>
         </div>
       </a>
@@ -318,6 +310,17 @@
         <div class="app-info">
           <span class="app-name">V-Appstore</span>
           <span class="app-desc">Vivo App Store</span>
+          <span class="app-tag">VIVO</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="vivo iqoo store">
+      <a href="intent://com.bbk.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+        <div class="icon">📱</div>
+        <div class="app-info">
+          <span class="app-name">Vivo Store</span>
+          <span class="app-desc">BBK App Store</span>
           <span class="app-tag">VIVO</span>
         </div>
       </a>
