@@ -146,6 +146,13 @@
     display: block;
   }
 
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    color: var(--text);
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -161,6 +168,7 @@
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .app-card::before {
@@ -238,25 +246,6 @@
     display: none;
   }
 
-  .note {
-    margin-top: 40px;
-    padding: 24px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent);
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
-  .note code {
-    background: var(--bg);
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 13px;
-    color: var(--accent);
-  }
-
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     #search { width: 100%; }
@@ -270,7 +259,7 @@
   <header>
     <div class="title-group">
       <h1>App Launcher Hub Pro</h1>
-      <p class="subtitle">Quick access to Android system apps</p>
+      <p class="subtitle">Quick access to Android system & brand apps</p>
     </div>
     <div class="controls">
       <div class="search-wrapper">
@@ -283,18 +272,88 @@
 
   <div class="stats">
     <div class="stat">
-      <strong id="totalApps">21</strong>
+      <strong id="totalApps">26</strong>
       Total Apps
     </div>
     <div class="stat">
-      <strong id="visibleApps">21</strong>
+      <strong id="visibleApps">26</strong>
       Shown
     </div>
   </div>
   
+  <h2 class="section-title">Brand App Stores</h2>
+  <div class="grid" id="brandGrid">
+    <div class="app-card" data-name="infinix app center xos store">
+      <a href="intent://#Intent;package=com.transsion.appstore;end" target="_blank" rel="noopener">
+        <div class="icon">📦</div>
+        <div class="app-info">
+          <span class="app-name">Infinix App Center</span>
+          <span class="app-desc">XOS App Store</span>
+          <span class="app-tag">INFINIX</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="vivo v-appstore app store">
+      <a href="intent://#Intent;package=com.vivo.appstore;end" target="_blank" rel="noopener">
+        <div class="icon">🛍️</div>
+        <div class="app-info">
+          <span class="app-name">V-Appstore</span>
+          <span class="app-desc">Vivo App Store</span>
+          <span class="app-tag">VIVO</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="xiaomi getapps mi picks store">
+      <a href="intent://#Intent;package=com.xiaomi.mipicks;end" target="_blank" rel="noopener">
+        <div class="icon">🔥</div>
+        <div class="app-info">
+          <span class="app-name">GetApps</span>
+          <span class="app-desc">Xiaomi App Store</span>
+          <span class="app-tag">XIAOMI</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="oppo app market store">
+      <a href="intent://#Intent;package=com.oppo.market;end" target="_blank" rel="noopener">
+        <div class="icon">🟢</div>
+        <div class="app-info">
+          <span class="app-name">Oppo App Market</span>
+          <span class="app-desc">Oppo App Store</span>
+          <span class="app-tag">OPPO</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="huawei appgallery store">
+      <a href="intent://#Intent;package=com.huawei.appmarket;end" target="_blank" rel="noopener">
+        <div class="icon">🌸</div>
+        <div class="app-info">
+          <span class="app-name">AppGallery</span>
+          <span class="app-desc">Huawei App Store</span>
+          <span class="app-tag">HUAWEI</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="app-card" data-name="play store apps google">
+      <a href="intent://#Intent;package=com.android.vending;end" target="_blank" rel="noopener">
+        <div class="icon">🛒</div>
+        <div class="app-info">
+          <span class="app-name">Play Store</span>
+          <span class="app-desc">Download apps & games</span>
+          <span class="app-tag">GOOGLE</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <h2 class="section-title">System Apps</h2>
   <div class="grid" id="appGrid">
     <div class="app-card" data-name="activity launcher hidden activities">
-      <a href="intent://de.szalkowski.activitylauncher/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=de.szalkowski.activitylauncher;end" target="_blank" rel="noopener">
         <div class="icon">🚀</div>
         <div class="app-info">
           <span class="app-name">Activity <strong>Launcher</strong></span>
@@ -305,7 +364,7 @@
     </div>
 
     <div class="app-card" data-name="settings device configuration">
-      <a href="intent://com.android.settings/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.android.settings;end" target="_blank" rel="noopener">
         <div class="icon">⚙️</div>
         <div class="app-info">
           <span class="app-name">Settings</span>
@@ -316,7 +375,7 @@
     </div>
 
     <div class="app-card" data-name="calculator samsung">
-      <a href="intent://com.sec.android.app.popupcalculator/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.sec.android.app.popupcalculator;end" target="_blank" rel="noopener">
         <div class="icon">🧮</div>
         <div class="app-info">
           <span class="app-name">Calculator</span>
@@ -327,7 +386,7 @@
     </div>
 
     <div class="app-card" data-name="phone dialer call">
-      <a href="intent://com.android.dialer/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.android.dialer;end" target="_blank" rel="noopener">
         <div class="icon">📞</div>
         <div class="app-info">
           <span class="app-name">Phone Dialer</span>
@@ -338,7 +397,7 @@
     </div>
 
     <div class="app-card" data-name="google search quicksearch">
-      <a href="intent://com.google.android.googlequicksearchbox/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.googlequicksearchbox;end" target="_blank" rel="noopener">
         <div class="icon">🔍</div>
         <div class="app-info">
           <span class="app-name">Google Search</span>
@@ -349,7 +408,7 @@
     </div>
 
     <div class="app-card" data-name="chrome browser">
-      <a href="intent://com.android.chrome/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.android.chrome;end" target="_blank" rel="noopener">
         <div class="icon">🌐</div>
         <div class="app-info">
           <span class="app-name">Chrome</span>
@@ -360,7 +419,7 @@
     </div>
 
     <div class="app-card" data-name="my files file manager samsung">
-      <a href="intent://com.sec.android.app.myfiles/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.sec.android.app.myfiles;end" target="_blank" rel="noopener">
         <div class="icon">📁</div>
         <div class="app-info">
           <span class="app-name">My Files</span>
@@ -371,7 +430,7 @@
     </div>
 
     <div class="app-card" data-name="gmail email">
-      <a href="intent://com.google.android.gm/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.gm;end" target="_blank" rel="noopener">
         <div class="icon">📧</div>
         <div class="app-info">
           <span class="app-name">Gmail</span>
@@ -382,7 +441,7 @@
     </div>
 
     <div class="app-card" data-name="google maps navigation">
-      <a href="intent://com.google.android.apps.maps/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.apps.maps;end" target="_blank" rel="noopener">
         <div class="icon">🗺️</div>
         <div class="app-info">
           <span class="app-name">Google Maps</span>
@@ -393,7 +452,7 @@
     </div>
 
     <div class="app-card" data-name="youtube video">
-      <a href="intent://com.google.android.youtube/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.youtube;end" target="_blank" rel="noopener">
         <div class="icon">▶️</div>
         <div class="app-info">
           <span class="app-name">YouTube</span>
@@ -403,19 +462,8 @@
       </a>
     </div>
 
-    <div class="app-card" data-name="play store apps">
-      <a href="intent://com.android.vending/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🛒</div>
-        <div class="app-info">
-          <span class="app-name">Play Store</span>
-          <span class="app-desc">Download apps & games</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
     <div class="app-card" data-name="camera photo">
-      <a href="intent://com.sec.android.app.camera/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.sec.android.app.camera;end" target="_blank" rel="noopener">
         <div class="icon">📷</div>
         <div class="app-info">
           <span class="app-name">Camera</span>
@@ -426,7 +474,7 @@
     </div>
 
     <div class="app-card" data-name="gallery photos images">
-      <a href="intent://com.sec.android.gallery3d/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.sec.android.gallery3d;end" target="_blank" rel="noopener">
         <div class="icon">🖼️</div>
         <div class="app-info">
           <span class="app-name">Gallery</span>
@@ -437,7 +485,7 @@
     </div>
 
     <div class="app-card" data-name="contacts phone book">
-      <a href="intent://com.android.contacts/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.android.contacts;end" target="_blank" rel="noopener">
         <div class="icon">👥</div>
         <div class="app-info">
           <span class="app-name">Contacts</span>
@@ -448,7 +496,7 @@
     </div>
 
     <div class="app-card" data-name="messages sms text">
-      <a href="intent://com.google.android.apps.messaging/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.apps.messaging;end" target="_blank" rel="noopener">
         <div class="icon">💬</div>
         <div class="app-info">
           <span class="app-name">Messages</span>
@@ -459,7 +507,7 @@
     </div>
 
     <div class="app-card" data-name="clock alarm timer">
-      <a href="intent://com.google.android.deskclock/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.deskclock;end" target="_blank" rel="noopener">
         <div class="icon">⏰</div>
         <div class="app-info">
           <span class="app-name">Clock</span>
@@ -470,7 +518,7 @@
     </div>
 
     <div class="app-card" data-name="calendar schedule">
-      <a href="intent://com.google.android.calendar/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.google.android.calendar;end" target="_blank" rel="noopener">
         <div class="icon">📅</div>
         <div class="app-info">
           <span class="app-name">Calendar</span>
@@ -481,7 +529,7 @@
     </div>
 
     <div class="app-card" data-name="downloads files">
-      <a href="intent://com.android.documentsui/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.android.documentsui;end" target="_blank" rel="noopener">
         <div class="icon">⬇️</div>
         <div class="app-info">
           <span class="app-name">Downloads</span>
@@ -492,7 +540,7 @@
     </div>
 
     <div class="app-card" data-name="samsung internet browser">
-      <a href="intent://com.sec.android.app.sbrowser/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.sec.android.app.sbrowser;end" target="_blank" rel="noopener">
         <div class="icon">🌍</div>
         <div class="app-info">
           <span class="app-name">Samsung Internet</span>
@@ -503,7 +551,7 @@
     </div>
 
     <div class="app-card" data-name="voice recorder audio">
-      <a href="intent://com.sec.android.app.voicenote/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.sec.android.app.voicenote;end" target="_blank" rel="noopener">
         <div class="icon">🎙️</div>
         <div class="app-info">
           <span class="app-name">Voice Recorder</span>
@@ -514,7 +562,7 @@
     </div>
 
     <div class="app-card" data-name="notes samsung notes">
-      <a href="intent://com.samsung.android.app.notes/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+      <a href="intent://#Intent;package=com.samsung.android.app.notes;end" target="_blank" rel="noopener">
         <div class="icon">📝</div>
         <div class="app-info">
           <span class="app-name">Samsung Notes</span>
@@ -549,15 +597,19 @@
 
   // Search filter with counter
   const search = document.getElementById('search');
-  const cards = document.querySelectorAll('.app-card');
+  const allCards = document.querySelectorAll('.app-card');
+  const totalApps = document.getElementById('totalApps');
   const visibleApps = document.getElementById('visibleApps');
   const noResults = document.getElementById('noResults');
+  
+  totalApps.textContent = allCards.length;
+  visibleApps.textContent = allCards.length;
   
   search.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     let visible = 0;
     
-    cards.forEach(card => {
+    allCards.forEach(card => {
       const text = card.dataset.name.toLowerCase();
       const isVisible = text.includes(query);
       card.style.display = isVisible ? 'block' : 'none';
