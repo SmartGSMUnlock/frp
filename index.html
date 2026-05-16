@@ -824,4 +824,63 @@
       const sectionBrand = parentSection.dataset.brand;
       
       const matchesSearch = text.includes(q);
-      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand ||
+      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand || sectionBrand === 'all';
+      
+      if (matchesSearch && matchesBrand) {
+        card.style.display = 'block';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    
+    visibleApps.textContent = visible;
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+  
+  brandTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      brandTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      filterByBrand(tab.dataset.brand);
+    });
+  });
+  
+  search.addEventListener('input', (e) => {
+    filterBySearch(e.target.value);
+  });
+  
+  totalApps.textContent = allCards.length;
+  updateCounts();
+
+  // Share functions - BAGONG DAGDAG
+  function shareToQuickShare(url, title) {
+    window.location.href = `intent://send?text=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}#Intent;action=android.intent.action.SEND;type=text/plain;package=com.samsung.android.app.sharelive;end`;
+  }
+
+  function shareToChrome(url) {
+    window.location.href = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
+  }
+
+  async function copyLink(url, btn) {
+    await navigator.clipboard.writeText(url);
+    const originalText = btn.textContent;
+    btn.textContent = '✓';
+    setTimeout(() => btn.textContent = originalText, 1500);
+  }
+
+  async function nativeShare(url, title) {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: title, text: title, url: url });
+      } catch (err) {
+        console.log('Share cancelled');
+      }
+    } else {
+      await navigator.clipboard.writeText(url);
+      alert('Link copied to clipboard!');
+    }
+  }
+</script>
+</body>
+</html>
