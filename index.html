@@ -779,7 +779,7 @@
     themeToggle.textContent = newTheme === 'dark' ? '☀' : '🌙';
   });
 
-  // Brand tab switching with smooth transition
+  // Brand tab switching
   const brandTabs = document.querySelectorAll('.brand-tab');
   const brandSections = document.querySelectorAll('.brand-section');
   const allCards = document.querySelectorAll('.app-card');
@@ -797,27 +797,26 @@
   }
   
   function filterByBrand(brand) {
-  currentBrand = brand;
-  
-  brandSections.forEach(section => {
-    // Tanggalin muna lahat ng hidden
-    section.classList.remove('hidden');
+    currentBrand = brand;
     
-    if (brand === 'all') {
-      // Pag "All" show lahat
-      section.style.display = 'block';
-    } else {
-      // Pag specific brand, hide yung hindi match
-      if (section.dataset.brand === brand || section.dataset.brand === 'all') {
+    brandSections.forEach(section => {
+      const sectionBrand = section.dataset.brand;
+      
+      if (brand === 'all') {
+        // Show lahat pag "All"
         section.style.display = 'block';
       } else {
-        section.style.display = 'none';
+        // Show lang yung matching brand
+        if (sectionBrand === brand) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
       }
-    }
-  });
-  
-  filterBySearch(search.value);
-}
+    });
+    
+    filterBySearch(search.value);
+  }
   
   function filterBySearch(query) {
     const q = query.toLowerCase();
@@ -829,7 +828,7 @@
       const sectionBrand = parentSection.dataset.brand;
       
       const matchesSearch = text.includes(q);
-      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand || sectionBrand === 'all';
+      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand;
       
       if (matchesSearch && matchesBrand) {
         card.style.display = 'block';
@@ -855,10 +854,11 @@
     filterBySearch(e.target.value);
   });
   
+  // Initialize - show lahat sa start
   totalApps.textContent = allCards.length;
-  updateCounts();
+  filterByBrand('all');
 
-  // Share functions - BAGONG DAGDAG
+  // Share functions
   function shareToQuickShare(url, title) {
     window.location.href = `intent://send?text=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}#Intent;action=android.intent.action.SEND;type=text/plain;package=com.samsung.android.app.sharelive;end`;
   }
@@ -887,5 +887,7 @@
     }
   }
 </script>
+</body>
+</html>
 </body>
 </html>
