@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>App Launcher Hub Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div class="container">
@@ -52,17 +52,28 @@
     <button class="brand-tab" data-brand="google">Google</button>
     <button class="brand-tab" data-brand="microsoft">Microsoft</button>
   </div>
-      <!-- SAMPLE DOWNLOAD 1 - KOPYAHIN MO ITO PARA SA BAGONG LINK -->
-      <div class="app-card" data-name="sample download file">
-        <a href="https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file">
+
+  <!-- DOWNLOADS SECTION - DITO KA MAG LAGAY NG LINKS MO -->
+  <div class="brand-section" data-brand="downloads">
+    <h2 class="section-title">Download Links <span class="section-badge">DOWNLOADS</span></h2>
+    <div class="download-note">
+      💡 <strong>Paano magdag:</strong> Kopyahin mo yung buong `<div class="app-card">...</div>` sa baba tapos palitan mo lang yung href, icon, name, at desc.
+    </div>
+    <div class="grid" id="downloadsGrid">
+      
+      <!-- SAMPLE DOWNLOAD 1 -->
+      <div class="app-card" data-name="adb enabler 2026 apk download">
+        <a href="https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file" target="_blank" rel="noopener">
           <div class="icon">📥</div>
           <div class="app-info">
             <span class="app-name">ADB Enabler 2026</span>
-            <span class="app-desc">ADB</span>
+            <span class="app-desc">Enable ADB on Android 14/15</span>
             <span class="app-tag">APK</span>
           </div>
         </a>
       </div>
+
+    </div>
   </div>
 
   <!-- SAMSUNG -->
@@ -800,49 +811,4 @@
       const sectionBrand = parentSection.dataset.brand;
       
       const matchesSearch = text.includes(q);
-      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand || sectionBrand === 'all';
-      
-      if (matchesSearch && matchesBrand) {
-        card.style.display = 'block';
-        visible++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-    
-    visibleApps.textContent = visible;
-    noResults.style.display = visible === 0 ? 'block' : 'none';
-  }
-  
-  brandTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      brandTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      filterByBrand(tab.dataset.brand);
-    });
-  });
-  
-  search.addEventListener('input', (e) => {
-    filterBySearch(e.target.value);
-  });
-  
-  totalApps.textContent = allCards.length;
-  updateCounts();
-
-  // Downloads tab actions
-  document.getElementById('refreshDownloads')?.addEventListener('click', () => {
-    alert('Refresh mo manually yung page or gamit ka ng file picker API kung gusto mo real-time');
-  });
-
-  document.getElementById('openFolder')?.addEventListener('click', () => {
-    window.location.href = 'intent://com.android.documentsui/#Intent;scheme=android-app;end';
-  });
-
-  document.getElementById('clearAll')?.addEventListener('click', () => {
-    if(confirm('Tanggalin lahat ng downloads sa list? Hindi mabubura yung actual files.')) {
-      document.getElementById('downloadsGrid').innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;grid-column:1/-1;">Walang downloads</p>';
-    }
-  });
-</script>
-</body>
-</html>
+      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand ||
