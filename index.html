@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>App Launcher Hub Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div class="container">
@@ -56,16 +56,19 @@
   <!-- DOWNLOADS TAB - DITO KA MAG LAGAY NG LINKS MO -->
   <div class="brand-section" data-brand="downloads">
     <h2 class="section-title">Download Links <span class="section-badge">DOWNLOADS</span></h2>
+    <div class="download-note">
+      💡 <strong>Paano magdagdag:</strong> Kopyahin mo yung buong `<div class="app-card">...</div>` sa baba tapos palitan mo lang yung href, icon, name, at desc.
+    </div>
     <div class="grid" id="downloadsGrid">
       
-      <!-- SAMPLE DOWNLOAD - KOPYAHIN MO ITO PARA SA BAGONG LINK -->
+      <!-- SAMPLE DOWNLOAD 1 - KOPYAHIN MO ITO PARA SA BAGONG LINK -->
       <div class="app-card" data-name="sample download file">
-        <a href="https://PUT_YOUR_LINK_HERE.com" target="_blank" rel="noopener">
+        <a href="https://PUT_YOUR_LINK_HERE.com/file.apk" target="_blank" rel="noopener">
           <div class="icon">📥</div>
           <div class="app-info">
-            <span class="app-name">ILAGAY MO PANGALAN DITO</span>
-            <span class="app-desc">ILAGAY MO DESCRIPTION DITO</span>
-            <span class="app-tag">DOWNLOAD</span>
+            <span class="app-name">PALITAN MO PANGALAN</span>
+            <span class="app-desc">PALITAN MO DESCRIPTION</span>
+            <span class="app-tag">APK</span>
           </div>
         </a>
       </div>
@@ -110,6 +113,28 @@
           </div>
         </a>
       </div>
+
+      <div class="app-card" data-name="game launcher samsung">
+        <a href="intent://com.samsung.android.gamehome/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🎮</div>
+          <div class="app-info">
+            <span class="app-name">Game Launcher</span>
+            <span class="app-desc">Samsung gaming hub</span>
+            <span class="app-tag">SAMSUNG</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="secure folder samsung">
+        <a href="intent://com.samsung.knox.securefolder/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🔒</div>
+          <div class="app-info">
+            <span class="app-name">Secure Folder</span>
+            <span class="app-desc">Private space for apps & files</span>
+            <span class="app-tag">SAMSUNG</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -134,6 +159,17 @@
           <div class="app-info">
             <span class="app-name">EasyShare</span>
             <span class="app-desc">Vivo fast file transfer</span>
+            <span class="app-tag">VIVO</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="vivo imanager iqoo secure">
+        <a href="intent://com.iqoo.secure/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛡️</div>
+          <div class="app-info">
+            <span class="app-name">iManager</span>
+            <span class="app-desc">Phone manager & optimizer</span>
             <span class="app-tag">VIVO</span>
           </div>
         </a>
@@ -166,6 +202,17 @@
           </div>
         </a>
       </div>
+
+      <div class="app-card" data-name="xiaomi security center">
+        <a href="intent://com.miui.securitycenter/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛡️</div>
+          <div class="app-info">
+            <span class="app-name">Security</span>
+            <span class="app-desc">MIUI security center</span>
+            <span class="app-tag">XIAOMI</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -190,6 +237,17 @@
           <div class="app-info">
             <span class="app-name">OPPO Share</span>
             <span class="app-desc">ColorOS file sharing</span>
+            <span class="app-tag">OPPO</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="oppo clone phone">
+        <a href="intent://com.coloros.backuprestore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📲</div>
+          <div class="app-info">
+            <span class="app-name">Clone Phone</span>
+            <span class="app-desc">Transfer data to OPPO</span>
             <span class="app-tag">OPPO</span>
           </div>
         </a>
@@ -222,6 +280,17 @@
           </div>
         </a>
       </div>
+
+      <div class="app-card" data-name="realme game space">
+        <a href="intent://com.coloros.gamespace/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🎮</div>
+          <div class="app-info">
+            <span class="app-name">Game Space</span>
+            <span class="app-desc">Gaming mode</span>
+            <span class="app-tag">REALME</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -250,6 +319,17 @@
           </div>
         </a>
       </div>
+
+      <div class="app-card" data-name="oneplus games">
+        <a href="intent://com.oneplus.games/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🎮</div>
+          <div class="app-info">
+            <span class="app-name">Games</span>
+            <span class="app-desc">Gaming mode & tools</span>
+            <span class="app-tag">ONEPLUS</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -274,6 +354,17 @@
           <div class="app-info">
             <span class="app-name">Huawei Share</span>
             <span class="app-desc">Fast device sharing</span>
+            <span class="app-tag">HUAWEI</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="huawei petal search">
+        <a href="intent://com.huawei.search/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🔍</div>
+          <div class="app-info">
+            <span class="app-name">Petal Search</span>
+            <span class="app-desc">Huawei search engine</span>
             <span class="app-tag">HUAWEI</span>
           </div>
         </a>
@@ -708,7 +799,6 @@
       }
     });
     
-    // Re-apply search filter
     filterBySearch(search.value);
   }
   
@@ -748,7 +838,6 @@
     filterBySearch(e.target.value);
   });
   
-  // Init counts
   totalApps.textContent = allCards.length;
   updateCounts();
 
@@ -763,7 +852,7 @@
 
   document.getElementById('clearAll')?.addEventListener('click', () => {
     if(confirm('Tanggalin lahat ng downloads sa list? Hindi mabubura yung actual files.')) {
-      document.getElementById('fileList').innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">Walang downloads</p>';
+      document.getElementById('downloadsGrid').innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;grid-column:1/-1;">Walang downloads</p>';
     }
   });
 </script>
