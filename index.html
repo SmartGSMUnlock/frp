@@ -151,7 +151,7 @@
   </div>
 
   <!-- VIVO -->
-  <div class="brand-section hidden" data-brand="vivo">
+    <div class="brand-section" data-brand="vivo">
     <h2 class="section-title">Vivo Store & Services <span class="section-badge">VIVO</span></h2>
     <div class="grid">
       <div class="app-card" data-name="vivo v-appstore app store">
@@ -190,7 +190,7 @@
   </div>
 
   <!-- XIAOMI -->
-  <div class="brand-section hidden" data-brand="xiaomi">
+  <div class="brand-section" data-brand="xiaomi">
     <h2 class="section-title">Xiaomi Services <span class="section-badge">XIAOMI</span></h2>
     <div class="grid">
       <div class="app-card" data-name="xiaomi mi store getapps">
@@ -229,7 +229,7 @@
   </div>
 
   <!-- OPPO -->
-  <div class="brand-section hidden" data-brand="oppo">
+  <div class="brand-section" data-brand="oppo">
     <h2 class="section-title">OPPO Services <span class="section-badge">OPPO</span></h2>
     <div class="grid">
       <div class="app-card" data-name="oppo app market">
@@ -268,7 +268,7 @@
   </div>
 
   <!-- REALME -->
-  <div class="brand-section hidden" data-brand="realme">
+  <div class="brand-section" data-brand="realme">>
     <h2 class="section-title">realme Services <span class="section-badge">REALME</span></h2>
     <div class="grid">
       <div class="app-card" data-name="realme store app market heytap">
@@ -307,7 +307,7 @@
   </div>
 
   <!-- ONEPLUS -->
-  <div class="brand-section hidden" data-brand="oneplus">
+  <div class="brand-section" data-brand="oneplus">
     <h2 class="section-title">OnePlus Services <span class="section-badge">ONEPLUS</span></h2>
     <div class="grid">
       <div class="app-card" data-name="oneplus store">
@@ -346,7 +346,7 @@
   </div>
 
   <!-- HUAWEI -->
-  <div class="brand-section hidden" data-brand="huawei">
+  <div class="brand-section" data-brand="huawei">
     <h2 class="section-title">Huawei Services <span class="section-badge">HUAWEI</span></h2>
     <div class="grid">
       <div class="app-card" data-name="huawei appgallery">
@@ -385,7 +385,7 @@
   </div>
 
   <!-- HONOR -->
-  <div class="brand-section hidden" data-brand="honor">
+  <div class="brand-section" data-brand="honor">
     <h2 class="section-title">Honor Services <span class="section-badge">HONOR</span></h2>
     <div class="grid">
       <div class="app-card" data-name="honor app market">
@@ -413,7 +413,7 @@
   </div>
 
   <!-- TECNO -->
-  <div class="brand-section hidden" data-brand="tecno">
+  <div class="brand-section" data-brand="tecno">
     <h2 class="section-title">Tecno Services <span class="section-badge">TECNO</span></h2>
     <div class="grid">
       <div class="app-card" data-name="tecno palm store app">
@@ -441,7 +441,7 @@
   </div>
 
   <!-- INFINIX -->
-  <div class="brand-section hidden" data-brand="infinix">
+  <div class="brand-section" data-brand="infinix">
     <h2 class="section-title">Infinix Services <span class="section-badge">INFINIX</span></h2>
     <div class="grid">
       <div class="app-card" data-name="infinix xshare app center xos">
@@ -480,7 +480,7 @@
   </div>
 
   <!-- ASUS -->
-  <div class="brand-section hidden" data-brand="asus">
+ <div class="brand-section" data-brand="asus">
     <h2 class="section-title">ASUS Services <span class="section-badge">ASUS</span></h2>
     <div class="grid">
       <div class="app-card" data-name="asus store">
@@ -519,7 +519,7 @@
   </div>
 
   <!-- MOTOROLA -->
-  <div class="brand-section hidden" data-brand="motorola">
+  <div class="brand-section" data-brand="motorola">
     <h2 class="section-title">Motorola Services <span class="section-badge">MOTOROLA</span></h2>
     <div class="grid">
       <div class="app-card" data-name="motorola migrate">
@@ -558,7 +558,7 @@
   </div>
 
   <!-- GOOGLE -->
-  <div class="brand-section hidden" data-brand="google">
+  <div class="brand-section" data-brand="google">
     <h2 class="section-title">Google Services <span class="section-badge">GOOGLE</span></h2>
     <div class="grid">
       <div class="app-card" data-name="google play store">
@@ -608,7 +608,7 @@
   </div>
 
   <!-- MICROSOFT -->
-  <div class="brand-section hidden" data-brand="microsoft">
+  <div class="brand-section" data-brand="microsoft">
     <h2 class="section-title">Microsoft Services <span class="section-badge">MICROSOFT</span></h2>
     <div class="grid">
       <div class="app-card" data-name="microsoft outlook">
@@ -797,22 +797,27 @@
   }
   
   function filterByBrand(brand) {
-    currentBrand = brand;
+  currentBrand = brand;
+  
+  brandSections.forEach(section => {
+    // Tanggalin muna lahat ng hidden
+    section.classList.remove('hidden');
     
-    brandSections.forEach(section => {
-      if (brand === 'all') {
-        section.classList.remove('hidden');
+    if (brand === 'all') {
+      // Pag "All" show lahat
+      section.style.display = 'block';
+    } else {
+      // Pag specific brand, hide yung hindi match
+      if (section.dataset.brand === brand || section.dataset.brand === 'all') {
+        section.style.display = 'block';
       } else {
-        if (section.dataset.brand === brand || section.dataset.brand === 'all') {
-          section.classList.remove('hidden');
-        } else {
-          section.classList.add('hidden');
-        }
+        section.style.display = 'none';
       }
-    });
-    
-    filterBySearch(search.value);
-  }
+    }
+  });
+  
+  filterBySearch(search.value);
+}
   
   function filterBySearch(query) {
     const q = query.toLowerCase();
