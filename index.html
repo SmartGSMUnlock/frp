@@ -56,25 +56,38 @@
   <!-- DOWNLOADS SECTION - DITO KA MAG LAGAY NG LINKS MO -->
   <div class="brand-section" data-brand="downloads">
     <h2 class="section-title">Download Links <span class="section-badge">DOWNLOADS</span></h2>
-    <div class="download-note">
-      💡 <strong>Paano magdag:</strong> Kopyahin mo yung buong `<div class="app-card">...</div>` sa baba tapos palitan mo lang yung href, icon, name, at desc.
-    </div>
+    
     <div class="grid" id="downloadsGrid">
       
-      <!-- SAMPLE DOWNLOAD 1 -->
-      <div class="app-card" data-name="adb enabler 2026 apk download">
-        <a href="https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file" target="_blank" rel="noopener">
-          <div class="icon">📥</div>
-          <div class="app-info">
-            <span class="app-name">ADB Enabler 2026</span>
-            <span class="app-desc">Enable ADB on Android 14/15</span>
-            <span class="app-tag">APK</span>
-          </div>
-        </a>
+  <!-- ADB ENABLER 2026 - Original mo -->
+  <div class="app-card" data-name="adb enabler 2026 apk download">
+    <a href="https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file" target="_blank" rel="noopener">
+      <div class="icon">📥</div>
+      <div class="app-info">
+        <span class="app-name">ADB Enabler 2026</span>
+        <span class="app-desc">Enable ADB on Android 14/15</span>
+        <span class="app-tag">APK</span>
       </div>
+    </a>
+  </div>
 
+  <!-- SHARE CARD - Para sa ADB Enabler link mo -->
+  <div class="app-card" data-name="share adb enabler 2026">
+    <div class="icon">📤</div>
+    <div class="app-info">
+      <span class="app-name">Share ADB Enabler</span>
+      <span class="app-desc">Share via Quick Share, Chrome, etc</span>
+      <span class="app-tag">SHARE</span>
+    </div>
+    <div class="share-actions">
+      <button class="share-btn" onclick="shareToQuickShare('https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file', 'ADB Enabler 2026')" title="Quick Share">⚡</button>
+      <button class="share-btn" onclick="shareToChrome('https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file')" title="Open in Chrome">🌐</button>
+      <button class="share-btn" onclick="copyLink('https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file', this)" title="Copy Link">📋</button>
+      <button class="share-btn" onclick="nativeShare('https://www.mediafire.com/file/n7kdr7wq1h5ior5/OctoAdbEnabler.apk/file', 'ADB Enabler 2026')" title="More Options">📱</button>
     </div>
   </div>
+
+</div>
 
   <!-- SAMSUNG -->
   <div class="brand-section" data-brand="samsung">
