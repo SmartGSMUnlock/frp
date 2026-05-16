@@ -5,260 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>App Launcher Hub Pro</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0f;
-    --card: #15151f;
-    --card-hover: #1c1c28;
-    --text: #e5e7eb;
-    --text-muted: #9ca3af;
-    --accent: #6366f1;
-    --accent2: #8b5cf6;
-    --border: #2a2a3a;
-    --shadow: 0 8px 32px rgba(0,0,0,0.4);
-    --glow: 0 0 20px rgba(99, 102, 241, 0.3);
-  }
-  
-  [data-theme="light"] {
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --card-hover: #f1f5f9;
-    --text: #0f172a;
-    --text-muted: #64748b;
-    --accent: #4f46e5;
-    --accent2: #7c3aed;
-    --border: #e2e8f0;
-    --shadow: 0 8px 32px rgba(0,0,0,0.08);
-    --glow: 0 0 20px rgba(79, 70, 229, 0.2);
-  }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: all 0.3s;
-    min-height: 100vh;
-    background-image: 
-      radial-gradient(at 20% 30%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-      radial-gradient(at 80% 70%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
-  }
-
-  .container { 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    padding: 24px 16px 60px;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .title-group h1 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 4px;
-  }
-  
-  .subtitle {
-    color: var(--text-muted);
-    font-size: 14px;
-  }
-
-  .controls {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .search-wrapper {
-    position: relative;
-  }
-
-  #search {
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 12px 16px 12px 42px;
-    border-radius: 12px;
-    font-size: 14px;
-    width: 280px;
-    transition: 0.2s;
-  }
-  #search:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: var(--glow);
-  }
-  
-  .search-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    pointer-events: none;
-  }
-
-  .theme-toggle {
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 12px 16px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.2s;
-  }
-  .theme-toggle:hover { 
-    background: var(--card-hover);
-    box-shadow: var(--glow);
-  }
-
-  .stats {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-  
-  .stat {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 13px;
-  }
-  .stat strong {
-    color: var(--accent);
-    font-size: 18px;
-    display: block;
-  }
-
-  .section-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 32px 0 16px;
-    color: var(--text);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
-  }
-
-  .app-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .app-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .app-card:hover {
-    border-color: var(--accent);
-    background: var(--card-hover);
-    transform: translateY(-4px);
-    box-shadow: var(--glow), var(--shadow);
-  }
-  
-  .app-card:hover::before {
-    transform: scaleX(1);
-  }
-
-  .app-card a {
-    color: var(--text);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .icon {
-    font-size: 2rem;
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 14px;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-  }
-
-  .app-info { flex: 1; }
-  .app-name { 
-    display: block; 
-    margin-bottom: 4px;
-    font-weight: 600;
-    font-size: 15px;
-  }
-  .app-desc { 
-    font-size: 12px; 
-    color: var(--text-muted); 
-    font-weight: 400;
-  }
-  .app-tag {
-    display: inline-block;
-    background: rgba(99, 102, 241, 0.15);
-    color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 600;
-    margin-top: 6px;
-  }
-
-  .no-results {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .grid { grid-template-columns: 1fr; }
-    #search { width: 100%; }
-    .controls { width: 100%; }
-    .search-wrapper { flex: 1; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
   <header>
     <div class="title-group">
       <h1>App Launcher Hub Pro</h1>
-      <p class="subtitle">Quick access to Android system apps</p>
+      <p class="subtitle">Quick access to Android system apps by brand</p>
     </div>
     <div class="controls">
       <div class="search-wrapper">
@@ -280,364 +34,623 @@
     </div>
   </div>
 
-  <h2 class="section-title">Quick Share & Device Sharing</h2>
-  <div class="grid" id="shareGrid">
-    <div class="app-card" data-name="samsung quick share sharelive">
-      <a href="intent://com.samsung.android.app.sharelive/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">⚡</div>
-        <div class="app-info">
-          <span class="app-name">Samsung Quick Share</span>
-          <span class="app-desc">Share files to Galaxy devices</span>
-          <span class="app-tag">SAMSUNG</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="google nearby share quick share">
-      <a href="intent://com.google.android.gms/.nearby.sharing.ReceiveSurfaceActivity/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📡</div>
-        <div class="app-info">
-          <span class="app-name">Nearby Share</span>
-          <span class="app-desc">Google Quick Share for Android</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="xiaomi mi share">
-      <a href="intent://com.miui.mishare/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🔄</div>
-        <div class="app-info">
-          <span class="app-name">Mi Share</span>
-          <span class="app-desc">Xiaomi file sharing</span>
-          <span class="app-tag">XIAOMI</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="oppo realme share coloros">
-      <a href="intent://com.coloros.sharescreen/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🌀</div>
-        <div class="app-info">
-          <span class="app-name">OPPO Share</span>
-          <span class="app-desc">OPPO/Realme sharing</span>
-          <span class="app-tag">OPPO</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="vivo easyshare">
-      <a href="intent://com.vivo.easyshare/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🚀</div>
-        <div class="app-info">
-          <span class="app-name">EasyShare</span>
-          <span class="app-desc">Vivo file transfer</span>
-          <span class="app-tag">VIVO</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="huawei share airsharing">
-      <a href="intent://com.huawei.android.airsharing/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">💨</div>
-        <div class="app-info">
-          <span class="app-name">Huawei Share</span>
-          <span class="app-desc">Huawei device sharing</span>
-          <span class="app-tag">HUAWEI</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="bluetooth share file transfer">
-      <a href="intent://com.android.bluetooth/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📶</div>
-        <div class="app-info">
-          <span class="app-name">Bluetooth Share</span>
-          <span class="app-desc">Universal file transfer</span>
-          <span class="app-tag">SYSTEM</span>
-        </div>
-      </a>
-    </div>
+  <div class="brand-tabs">
+    <button class="brand-tab active" data-brand="all">All</button>
+    <button class="brand-tab" data-brand="downloads">Downloads</button>
+    <button class="brand-tab" data-brand="samsung">Samsung</button>
+    <button class="brand-tab" data-brand="vivo">Vivo</button>
+    <button class="brand-tab" data-brand="xiaomi">Xiaomi</button>
+    <button class="brand-tab" data-brand="oppo">OPPO</button>
+    <button class="brand-tab" data-brand="realme">realme</button>
+    <button class="brand-tab" data-brand="oneplus">OnePlus</button>
+    <button class="brand-tab" data-brand="huawei">Huawei</button>
+    <button class="brand-tab" data-brand="honor">Honor</button>
+    <button class="brand-tab" data-brand="tecno">Tecno</button>
+    <button class="brand-tab" data-brand="infinix">Infinix</button>
+    <button class="brand-tab" data-brand="asus">ASUS</button>
+    <button class="brand-tab" data-brand="motorola">Motorola</button>
+    <button class="brand-tab" data-brand="google">Google</button>
+    <button class="brand-tab" data-brand="microsoft">Microsoft</button>
   </div>
-  
-  <h2 class="section-title">Brand App Stores</h2>
-  <div class="grid" id="brandGrid">
-    <div class="app-card" data-name="infinix xshare app center xos">
-      <a href="intent://com.transsion.phonemaster/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📦</div>
-        <div class="app-info">
-          <span class="app-name">Infinix Phone Master</span>
-          <span class="app-desc">XOS App Center & Tools</span>
-          <span class="app-tag">INFINIX</span>
-        </div>
-      </a>
-    </div>
 
-    <div class="app-card" data-name="infinix palm store app">
-      <a href="intent://com.transsion.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🌴</div>
-        <div class="app-info">
-          <span class="app-name">Palm Store</span>
-          <span class="app-desc">Infinix/Tecno App Store</span>
-          <span class="app-tag">INFINIX</span>
-        </div>
-      </a>
-    </div>
+  <!-- DOWNLOADS TAB - DITO KA MAG LAGAY NG LINKS MO -->
+  <div class="brand-section" data-brand="downloads">
+    <h2 class="section-title">Download Links <span class="section-badge">DOWNLOADS</span></h2>
+    <div class="grid" id="downloadsGrid">
+      
+      <!-- SAMPLE DOWNLOAD - KOPYAHIN MO ITO PARA SA BAGONG LINK -->
+      <div class="app-card" data-name="sample download file">
+        <a href="https://PUT_YOUR_LINK_HERE.com" target="_blank" rel="noopener">
+          <div class="icon">📥</div>
+          <div class="app-info">
+            <span class="app-name">ILAGAY MO PANGALAN DITO</span>
+            <span class="app-desc">ILAGAY MO DESCRIPTION DITO</span>
+            <span class="app-tag">DOWNLOAD</span>
+          </div>
+        </a>
+      </div>
+      <!-- HANGGANG DITO YUNG SAMPLE - KOPYAHIN MO SA BABA NITO -->
 
-    <div class="app-card" data-name="vivo v-appstore app store">
-      <a href="intent://com.vivo.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🛍</div>
-        <div class="app-info">
-          <span class="app-name">V-Appstore</span>
-          <span class="app-desc">Vivo App Store</span>
-          <span class="app-tag">VIVO</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="vivo iqoo store">
-      <a href="intent://com.bbk.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📱</div>
-        <div class="app-info">
-          <span class="app-name">Vivo Store</span>
-          <span class="app-desc">BBK App Store</span>
-          <span class="app-tag">VIVO</span>
-        </div>
-      </a>
     </div>
   </div>
 
-  <h2 class="section-title">System Apps</h2>
-  <div class="grid" id="appGrid">
-    <div class="app-card" data-name="activity launcher hidden activities">
-      <a href="intent://de.szalkowski.activitylauncher/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🚀</div>
-        <div class="app-info">
-          <span class="app-name">Activity <strong>Launcher</strong></span>
-          <span class="app-desc">Open hidden activities & shortcuts</span>
-          <span class="app-tag">SYSTEM</span>
-        </div>
-      </a>
+  <!-- SAMSUNG -->
+  <div class="brand-section" data-brand="samsung">
+    <h2 class="section-title">Samsung Store & Services <span class="section-badge">SAMSUNG</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="samsung galaxy store">
+        <a href="intent://com.sec.android.app.samsungapps/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🌌</div>
+          <div class="app-info">
+            <span class="app-name">Galaxy Store</span>
+            <span class="app-desc">Samsung official app store</span>
+            <span class="app-tag">SAMSUNG</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="samsung quick share sharelive">
+        <a href="intent://com.samsung.android.app.sharelive/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">⚡</div>
+          <div class="app-info">
+            <span class="app-name">Quick Share</span>
+            <span class="app-desc">Share to Galaxy devices</span>
+            <span class="app-tag">SAMSUNG</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="samsung accessibility">
+        <a href="intent://com.samsung.accessibility/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🦯</div>
+          <div class="app-info">
+            <span class="app-name">Samsung Accessibility</span>
+            <span class="app-desc">Accessibility suite</span>
+            <span class="app-tag">SAMSUNG</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIVO -->
+  <div class="brand-section hidden" data-brand="vivo">
+    <h2 class="section-title">Vivo Store & Services <span class="section-badge">VIVO</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="vivo v-appstore app store">
+        <a href="intent://com.vivo.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛍</div>
+          <div class="app-info">
+            <span class="app-name">V-Appstore</span>
+            <span class="app-desc">Vivo official app store</span>
+            <span class="app-tag">VIVO</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="vivo easyshare">
+        <a href="intent://com.vivo.easyshare/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🚀</div>
+          <div class="app-info">
+            <span class="app-name">EasyShare</span>
+            <span class="app-desc">Vivo fast file transfer</span>
+            <span class="app-tag">VIVO</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- XIAOMI -->
+  <div class="brand-section hidden" data-brand="xiaomi">
+    <h2 class="section-title">Xiaomi Services <span class="section-badge">XIAOMI</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="xiaomi mi store getapps">
+        <a href="intent://com.xiaomi.mipicks/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📱</div>
+          <div class="app-info">
+            <span class="app-name">GetApps</span>
+            <span class="app-desc">Xiaomi app store</span>
+            <span class="app-tag">XIAOMI</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="xiaomi mi share">
+        <a href="intent://com.miui.mishare/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🔄</div>
+          <div class="app-info">
+            <span class="app-name">Mi Share</span>
+            <span class="app-desc">Xiaomi fast sharing</span>
+            <span class="app-tag">XIAOMI</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPPO -->
+  <div class="brand-section hidden" data-brand="oppo">
+    <h2 class="section-title">OPPO Services <span class="section-badge">OPPO</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="oppo app market">
+        <a href="intent://com.oppo.market/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛍️</div>
+          <div class="app-info">
+            <span class="app-name">OPPO App Market</span>
+            <span class="app-desc">Official OPPO store</span>
+            <span class="app-tag">OPPO</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="oppo share coloros">
+        <a href="intent://com.coloros.sharescreen/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🌀</div>
+          <div class="app-info">
+            <span class="app-name">OPPO Share</span>
+            <span class="app-desc">ColorOS file sharing</span>
+            <span class="app-tag">OPPO</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- REALME -->
+  <div class="brand-section hidden" data-brand="realme">
+    <h2 class="section-title">realme Services <span class="section-badge">REALME</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="realme store app market heytap">
+        <a href="intent://com.heytap.market/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛒</div>
+          <div class="app-info">
+            <span class="app-name">realme Store</span>
+            <span class="app-desc">HeyTap app market</span>
+            <span class="app-tag">REALME</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="realme link">
+        <a href="intent://com.realme.link/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🔗</div>
+          <div class="app-info">
+            <span class="app-name">realme Link</span>
+            <span class="app-desc">IoT device control</span>
+            <span class="app-tag">REALME</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONEPLUS -->
+  <div class="brand-section hidden" data-brand="oneplus">
+    <h2 class="section-title">OnePlus Services <span class="section-badge">ONEPLUS</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="oneplus store">
+        <a href="intent://com.oneplus.store/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛍️</div>
+          <div class="app-info">
+            <span class="app-name">OnePlus Store</span>
+            <span class="app-desc">Shop OnePlus products</span>
+            <span class="app-tag">ONEPLUS</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="oneplus clone phone">
+        <a href="intent://com.oneplus.backuprestore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📲</div>
+          <div class="app-info">
+            <span class="app-name">Clone Phone</span>
+            <span class="app-desc">Data migration tool</span>
+            <span class="app-tag">ONEPLUS</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUAWEI -->
+  <div class="brand-section hidden" data-brand="huawei">
+    <h2 class="section-title">Huawei Services <span class="section-badge">HUAWEI</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="huawei appgallery">
+        <a href="intent://com.huawei.appmarket/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🏪</div>
+          <div class="app-info">
+            <span class="app-name">AppGallery</span>
+            <span class="app-desc">Huawei app store</span>
+            <span class="app-tag">HUAWEI</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="huawei share airsharing">
+        <a href="intent://com.huawei.android.airsharing/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">💨</div>
+          <div class="app-info">
+            <span class="app-name">Huawei Share</span>
+            <span class="app-desc">Fast device sharing</span>
+            <span class="app-tag">HUAWEI</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HONOR -->
+  <div class="brand-section hidden" data-brand="honor">
+    <h2 class="section-title">Honor Services <span class="section-badge">HONOR</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="honor app market">
+        <a href="intent://com.hihonor.appmarket/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🏪</div>
+          <div class="app-info">
+            <span class="app-name">Honor Store</span>
+            <span class="app-desc">Honor app market</span>
+            <span class="app-tag">HONOR</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="honor share">
+        <a href="intent://com.hihonor.hishare/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📤</div>
+          <div class="app-info">
+            <span class="app-name">Honor Share</span>
+            <span class="app-desc">Fast file transfer</span>
+            <span class="app-tag">HONOR</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECNO -->
+  <div class="brand-section hidden" data-brand="tecno">
+    <h2 class="section-title">Tecno Services <span class="section-badge">TECNO</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="tecno palm store app">
+        <a href="intent://com.transsion.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🌴</div>
+          <div class="app-info">
+            <span class="app-name">Palm Store</span>
+            <span class="app-desc">Tecno app store</span>
+            <span class="app-tag">TECNO</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="tecno phone master">
+        <a href="intent://com.transsion.phonemaster/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📦</div>
+          <div class="app-info">
+            <span class="app-name">Phone Master</span>
+            <span class="app-desc">Device optimizer</span>
+            <span class="app-tag">TECNO</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFINIX -->
+  <div class="brand-section hidden" data-brand="infinix">
+    <h2 class="section-title">Infinix Services <span class="section-badge">INFINIX</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="infinix xshare app center xos">
+        <a href="intent://com.transsion.phonemaster/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📦</div>
+          <div class="app-info">
+            <span class="app-name">Phone Master</span>
+            <span class="app-desc">XOS App Center & Tools</span>
+            <span class="app-tag">INFINIX</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="infinix palm store app">
+        <a href="intent://com.transsion.appstore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🌴</div>
+          <div class="app-info">
+            <span class="app-name">Palm Store</span>
+            <span class="app-desc">Infinix/Tecno App Store</span>
+            <span class="app-tag">INFINIX</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="infinix xshare">
+        <a href="intent://com.transsion.xshare/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📤</div>
+          <div class="app-info">
+            <span class="app-name">XShare</span>
+            <span class="app-desc">Fast file sharing</span>
+            <span class="app-tag">INFINIX</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASUS -->
+  <div class="brand-section hidden" data-brand="asus">
+    <h2 class="section-title">ASUS Services <span class="section-badge">ASUS</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="asus store">
+        <a href="intent://com.asus.eestore/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛒</div>
+          <div class="app-info">
+            <span class="app-name">ASUS Store</span>
+            <span class="app-desc">Shop ASUS products</span>
+            <span class="app-tag">ASUS</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="asus data transfer">
+        <a href="intent://com.asus.datatransfer/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📲</div>
+          <div class="app-info">
+            <span class="app-name">Data Transfer</span>
+            <span class="app-desc">Move data to ASUS</span>
+            <span class="app-tag">ASUS</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="asus armoury crate">
+        <a href="intent://com.asus.armoury.crate/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🎮</div>
+          <div class="app-info">
+            <span class="app-name">Armoury Crate</span>
+            <span class="app-desc">Gaming center</span>
+            <span class="app-tag">ASUS</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOTOROLA -->
+  <div class="brand-section hidden" data-brand="motorola">
+    <h2 class="section-title">Motorola Services <span class="section-badge">MOTOROLA</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="motorola migrate">
+        <a href="intent://com.motorola.migrate/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📲</div>
+          <div class="app-info">
+            <span class="app-name">Motorola Migrate</span>
+            <span class="app-desc">Transfer data tool</span>
+            <span class="app-tag">MOTOROLA</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="moto app launcher">
+        <a href="intent://com.motorola.launcher3/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🏠</div>
+          <div class="app-info">
+            <span class="app-name">Moto Launcher</span>
+            <span class="app-desc">Motorola home screen</span>
+            <span class="app-tag">MOTOROLA</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="moto ready for">
+        <a href="intent://com.motorola.readyforassistant/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🖥️</div>
+          <div class="app-info">
+            <span class="app-name">Ready For</span>
+            <span class="app-desc">Desktop experience</span>
+            <span class="app-tag">MOTOROLA</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOOGLE -->
+  <div class="brand-section hidden" data-brand="google">
+    <h2 class="section-title">Google Services <span class="section-badge">GOOGLE</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="google play store">
+        <a href="intent://com.android.vending/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🛒</div>
+          <div class="app-info">
+            <span class="app-name">Play Store</span>
+            <span class="app-desc">Download apps & games</span>
+            <span class="app-tag">GOOGLE</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="google nearby share quick share">
+        <a href="intent://com.google.android.gms/.nearby.sharing.ReceiveSurfaceActivity/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📡</div>
+          <div class="app-info">
+            <span class="app-name">Nearby Share</span>
+            <span class="app-desc">Google Quick Share</span>
+            <span class="app-tag">GOOGLE</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="google chrome browser">
+        <a href="intent://com.android.chrome/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🌐</div>
+          <div class="app-info">
+            <span class="app-name">Chrome</span>
+            <span class="app-desc">Web browser</span>
+            <span class="app-tag">GOOGLE</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="gmail email">
+        <a href="intent://com.google.android.gm/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📧</div>
+          <div class="app-info">
+            <span class="app-name">Gmail</span>
+            <span class="app-desc">Email client</span>
+            <span class="app-tag">GOOGLE</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MICROSOFT -->
+  <div class="brand-section hidden" data-brand="microsoft">
+    <h2 class="section-title">Microsoft Services <span class="section-badge">MICROSOFT</span></h2>
+    <div class="grid">
+      <div class="app-card" data-name="microsoft outlook">
+        <a href="intent://com.microsoft.office.outlook/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📧</div>
+          <div class="app-info">
+            <span class="app-name">Outlook</span>
+            <span class="app-desc">Email & calendar</span>
+            <span class="app-tag">MICROSOFT</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="microsoft onedrive">
+        <a href="intent://com.microsoft.skydrive/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">☁️</div>
+          <div class="app-info">
+            <span class="app-name">OneDrive</span>
+            <span class="app-desc">Cloud storage</span>
+            <span class="app-tag">MICROSOFT</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="microsoft teams">
+        <a href="intent://com.microsoft.teams/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">👥</div>
+          <div class="app-info">
+            <span class="app-name">Teams</span>
+            <span class="app-desc">Video calls & chat</span>
+            <span class="app-tag">MICROSOFT</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="link to windows">
+        <a href="intent://com.microsoft.appmanager/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">💻</div>
+          <div class="app-info">
+            <span class="app-name">Link to Windows</span>
+            <span class="app-desc">Connect to PC</span>
+            <span class="app-tag">MICROSOFT</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL APPS / SYSTEM -->
+  <div class="brand-section" data-brand="all">
+    <h2 class="section-title">Quick Share & Device Sharing</h2>
+    <div class="grid">
+      <div class="app-card" data-name="google nearby share quick share">
+        <a href="intent://com.google.android.gms/.nearby.sharing.ReceiveSurfaceActivity/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📡</div>
+          <div class="app-info">
+            <span class="app-name">Nearby Share</span>
+            <span class="app-desc">Universal Android sharing</span>
+            <span class="app-tag">GOOGLE</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="bluetooth share file transfer">
+        <a href="intent://com.android.bluetooth/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📶</div>
+          <div class="app-info">
+            <span class="app-name">Bluetooth Share</span>
+            <span class="app-desc">Universal file transfer</span>
+            <span class="app-tag">SYSTEM</span>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <div class="app-card" data-name="settings device configuration">
-      <a href="intent://com.android.settings/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">⚙</div>
-        <div class="app-info">
-          <span class="app-name">Settings</span>
-          <span class="app-desc">Device configuration & options</span>
-          <span class="app-tag">SYSTEM</span>
-        </div>
-      </a>
+    <h2 class="section-title">Accessibility</h2>
+    <div class="grid">
+      <div class="app-card" data-name="accessibility settings">
+        <a href="intent://com.android.settings/.accessibility.AccessibilitySettingsActivity/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">♿</div>
+          <div class="app-info">
+            <span class="app-name">Accessibility</span>
+            <span class="app-desc">Android accessibility options</span>
+            <span class="app-tag">SYSTEM</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-card" data-name="talkback screen reader">
+        <a href="intent://com.google.android.marvin.talkback/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🔊</div>
+          <div class="app-info">
+            <span class="app-name">TalkBack</span>
+            <span class="app-desc">Screen reader service</span>
+            <span class="app-tag">GOOGLE</span>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <div class="app-card" data-name="calculator samsung">
-      <a href="intent://com.sec.android.app.popupcalculator/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🧮</div>
-        <div class="app-info">
-          <span class="app-name">Calculator</span>
-          <span class="app-desc">Samsung Calculator app</span>
-          <span class="app-tag">TOOL</span>
-        </div>
-      </a>
-    </div>
+    <h2 class="section-title">System Tools</h2>
+    <div class="grid">
+      <div class="app-card" data-name="activity launcher hidden activities">
+        <a href="intent://de.szalkowski.activitylauncher/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">🚀</div>
+          <div class="app-info">
+            <span class="app-name">Activity <strong>Launcher</strong></span>
+            <span class="app-desc">Open hidden activities & shortcuts</span>
+            <span class="app-tag">SYSTEM</span>
+          </div>
+        </a>
+      </div>
 
-    <div class="app-card" data-name="phone dialer call">
-      <a href="intent://com.android.dialer/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📞</div>
-        <div class="app-info">
-          <span class="app-name">Phone Dialer</span>
-          <span class="app-desc">Make calls & contacts</span>
-          <span class="app-tag">COMM</span>
-        </div>
-      </a>
-    </div>
+      <div class="app-card" data-name="settings device configuration">
+        <a href="intent://com.android.settings/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">⚙</div>
+          <div class="app-info">
+            <span class="app-name">Settings</span>
+            <span class="app-desc">Device configuration & options</span>
+            <span class="app-tag">SYSTEM</span>
+          </div>
+        </a>
+      </div>
 
-    <div class="app-card" data-name="google search quicksearch">
-      <a href="intent://com.google.android.googlequicksearchbox/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🔍</div>
-        <div class="app-info">
-          <span class="app-name">Google Search</span>
-          <span class="app-desc">Quick search & Assistant</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
+      <div class="app-card" data-name="phone dialer call">
+        <a href="intent://com.android.dialer/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">📞</div>
+          <div class="app-info">
+            <span class="app-name">Phone Dialer</span>
+            <span class="app-desc">Make calls & contacts</span>
+            <span class="app-tag">COMM</span>
+          </div>
+        </a>
+      </div>
 
-    <div class="app-card" data-name="chrome browser">
-      <a href="intent://com.android.chrome/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🌐</div>
-        <div class="app-info">
-          <span class="app-name">Chrome</span>
-          <span class="app-desc">Web browser</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="my files file manager samsung">
-      <a href="intent://com.sec.android.app.myfiles/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📁</div>
-        <div class="app-info">
-          <span class="app-name">My Files</span>
-          <span class="app-desc">Samsung File Manager</span>
-          <span class="app-tag">TOOL</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="gmail email">
-      <a href="intent://com.google.android.gm/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📧</div>
-        <div class="app-info">
-          <span class="app-name">Gmail</span>
-          <span class="app-desc">Email client</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="google maps navigation">
-      <a href="intent://com.google.android.apps.maps/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🗺</div>
-        <div class="app-info">
-          <span class="app-name">Google Maps</span>
-          <span class="app-desc">Navigation & places</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="youtube video">
-      <a href="intent://com.google.android.youtube/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">▶</div>
-        <div class="app-info">
-          <span class="app-name">YouTube</span>
-          <span class="app-desc">Video streaming</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="play store apps">
-      <a href="intent://com.android.vending/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🛒</div>
-        <div class="app-info">
-          <span class="app-name">Play Store</span>
-          <span class="app-desc">Download apps & games</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="camera photo">
-      <a href="intent://com.sec.android.app.camera/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📷</div>
-        <div class="app-info">
-          <span class="app-name">Camera</span>
-          <span class="app-desc">Take photos & videos</span>
-          <span class="app-tag">MEDIA</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="gallery photos images">
-      <a href="intent://com.sec.android.gallery3d/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🖼</div>
-        <div class="app-info">
-          <span class="app-name">Gallery</span>
-          <span class="app-desc">View photos & albums</span>
-          <span class="app-tag">MEDIA</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="contacts phone book">
-      <a href="intent://com.android.contacts/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">👥</div>
-        <div class="app-info">
-          <span class="app-name">Contacts</span>
-          <span class="app-desc">Manage contacts</span>
-          <span class="app-tag">COMM</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="messages sms text">
-      <a href="intent://com.google.android.apps.messaging/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">💬</div>
-        <div class="app-info">
-          <span class="app-name">Messages</span>
-          <span class="app-desc">SMS & RCS messaging</span>
-          <span class="app-tag">COMM</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="clock alarm timer">
-      <a href="intent://com.google.android.deskclock/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">⏰</div>
-        <div class="app-info">
-          <span class="app-name">Clock</span>
-          <span class="app-desc">Alarm, timer, stopwatch</span>
-          <span class="app-tag">TOOL</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="calendar schedule">
-      <a href="intent://com.google.android.calendar/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📅</div>
-        <div class="app-info">
-          <span class="app-name">Calendar</span>
-          <span class="app-desc">Events & schedule</span>
-          <span class="app-tag">GOOGLE</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="downloads files">
-      <a href="intent://com.android.documentsui/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">⬇</div>
-        <div class="app-info">
-          <span class="app-name">Downloads</span>
-          <span class="app-desc">Downloaded files manager</span>
-          <span class="app-tag">SYSTEM</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="samsung internet browser">
-      <a href="intent://com.sec.android.app.sbrowser/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🌍</div>
-        <div class="app-info">
-          <span class="app-name">Samsung Internet</span>
-          <span class="app-desc">Samsung web browser</span>
-          <span class="app-tag">SAMSUNG</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="voice recorder audio">
-      <a href="intent://com.sec.android.app.voicenote/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">🎙</div>
-        <div class="app-info">
-          <span class="app-name">Voice Recorder</span>
-          <span class="app-desc">Record audio notes</span>
-          <span class="app-tag">TOOL</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="app-card" data-name="notes samsung notes">
-      <a href="intent://com.samsung.android.app.notes/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
-        <div class="icon">📝</div>
-        <div class="app-info">
-          <span class="app-name">Samsung Notes</span>
-          <span class="app-desc">Note taking app</span>
-          <span class="app-tag">SAMSUNG</span>
-        </div>
-      </a>
+      <div class="app-card" data-name="downloads files">
+        <a href="intent://com.android.documentsui/#Intent;scheme=android-app;end" target="_blank" rel="noopener">
+          <div class="icon">⬇</div>
+          <div class="app-info">
+            <span class="app-name">Downloads</span>
+            <span class="app-desc">Downloaded files manager</span>
+            <span class="app-tag">SYSTEM</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -663,29 +676,95 @@
     themeToggle.textContent = newTheme === 'dark' ? '☀' : '🌙';
   });
 
-  // Search filter with counter
-  const search = document.getElementById('search');
-  const cards = document.querySelectorAll('.app-card');
+  // Brand tab switching with smooth transition
+  const brandTabs = document.querySelectorAll('.brand-tab');
+  const brandSections = document.querySelectorAll('.brand-section');
+  const allCards = document.querySelectorAll('.app-card');
   const totalApps = document.getElementById('totalApps');
   const visibleApps = document.getElementById('visibleApps');
   const noResults = document.getElementById('noResults');
+  const search = document.getElementById('search');
   
-  totalApps.textContent = cards.length;
-  visibleApps.textContent = cards.length;
+  let currentBrand = 'all';
   
-  search.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
+  function updateCounts() {
+    const visible = document.querySelectorAll('.app-card:not([style*="display: none"])').length;
+    visibleApps.textContent = visible;
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+  
+  function filterByBrand(brand) {
+    currentBrand = brand;
+    
+    brandSections.forEach(section => {
+      if (brand === 'all') {
+        section.classList.remove('hidden');
+      } else {
+        if (section.dataset.brand === brand || section.dataset.brand === 'all') {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      }
+    });
+    
+    // Re-apply search filter
+    filterBySearch(search.value);
+  }
+  
+  function filterBySearch(query) {
+    const q = query.toLowerCase();
     let visible = 0;
     
-    cards.forEach(card => {
+    allCards.forEach(card => {
       const text = card.dataset.name.toLowerCase();
-      const isVisible = text.includes(query);
-      card.style.display = isVisible ? 'block' : 'none';
-      if (isVisible) visible++;
+      const parentSection = card.closest('.brand-section');
+      const sectionBrand = parentSection.dataset.brand;
+      
+      const matchesSearch = text.includes(q);
+      const matchesBrand = currentBrand === 'all' || sectionBrand === currentBrand || sectionBrand === 'all';
+      
+      if (matchesSearch && matchesBrand) {
+        card.style.display = 'block';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
     });
     
     visibleApps.textContent = visible;
     noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+  
+  brandTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      brandTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      filterByBrand(tab.dataset.brand);
+    });
+  });
+  
+  search.addEventListener('input', (e) => {
+    filterBySearch(e.target.value);
+  });
+  
+  // Init counts
+  totalApps.textContent = allCards.length;
+  updateCounts();
+
+  // Downloads tab actions
+  document.getElementById('refreshDownloads')?.addEventListener('click', () => {
+    alert('Refresh mo manually yung page or gamit ka ng file picker API kung gusto mo real-time');
+  });
+
+  document.getElementById('openFolder')?.addEventListener('click', () => {
+    window.location.href = 'intent://com.android.documentsui/#Intent;scheme=android-app;end';
+  });
+
+  document.getElementById('clearAll')?.addEventListener('click', () => {
+    if(confirm('Tanggalin lahat ng downloads sa list? Hindi mabubura yung actual files.')) {
+      document.getElementById('fileList').innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">Walang downloads</p>';
+    }
   });
 </script>
 </body>
